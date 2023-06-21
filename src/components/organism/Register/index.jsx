@@ -2,13 +2,19 @@ import React from 'react'
 import InputForm from '../../molecules/InputForm'
 import Button from '../../atom/Button'
 
-export default function Register() {
+export default function Register(props) {
+  const {onClick} = props;
   return (
-    <form action="">
+    
+      <form action="">
         <InputForm label="Username" type="username" placeholder="Masukan Username"/>
         <InputForm label="Email" type="email" placeholder="Masukan Email"/>
         <InputForm label="Password" type="password" name="password" placeholder="Masukan Password"/>
         <Button color="bg-blue-500">Register</Button>
+        <Button onClick={onClick} color="bg-blue-500">Close</Button>
+        
     </form>
+     
+  
   )
 }

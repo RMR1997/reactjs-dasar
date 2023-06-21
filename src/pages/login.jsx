@@ -7,7 +7,6 @@ export default function LoginPage() {
     return (
   
         <>
-
      <div class="flex justify-center items-center min-h-screen bg-[url('../../public/images/rubick.jpg')] object-center bg-cover">
         <AuthLayout title="Login" desc="silahkan masuk" type="login">
         <Login>
@@ -21,6 +20,8 @@ export default function LoginPage() {
             </p> */} 
         </AuthLayout>
     </div>
+
+
         </>
 
        

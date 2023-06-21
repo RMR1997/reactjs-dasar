@@ -9,11 +9,14 @@ import {
 import RegisterPage from './pages/register.jsx';
 import LoginPage from './pages/login.jsx';
 import ErrorPage from './pages/error.jsx';
+import ProductPage from './pages/products.jsx';
+import Modal from './pages/modal.jsx';
+import Counter from './belajar/LifeCycle/Counter/index.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>DASHBOARD PAGE</div>,
+    element: <App/>,
     errorElement: <ErrorPage/>
   },
 
@@ -25,7 +28,17 @@ const router = createBrowserRouter([
   {
     path:"/registerPage",
     element:<RegisterPage/>
-  }
+  },
+  {
+    path:"/products",
+    element:<ProductPage/>
+  },
+  {
+    path:"/modal",
+    element:<Modal/>
+  },
+  
+ 
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
