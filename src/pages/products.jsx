@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import CardProduct from '../components/organism/CardProduct'
 import { getProduct } from '../services/product.service';
-import { getUsername } from '../services/auth.services';
+import { useLogin } from '../hooks/useLogin';
+
 
 // const data = [{
 //   id:1,
@@ -35,17 +36,7 @@ export default function ProductPage() {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [data, setData] = useState([]);
-  const [username, setUsername] = useState("");
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    // cek token, kalo ga ada token bakal diarahin ke login
-    if(token) {
-      setUsername(getUsername(token));
-    } else {
-      window.location.href = "/loginPage";
-    }
-  },[]);
+  const username = useLogin();
   //   {
   //   id:1,
   //   qty:1,
@@ -105,7 +96,8 @@ export default function ProductPage() {
   return (
     <>
     <div className='bg-red-500 flex gap-10 w-full h-10'>
-    <div className='flex '> <h1 className='text-white text-2xl  font-bold'>Hi : {username} MF</h1>
+    <div className='flex '>
+      <a href="/profile"><h1 className='text-white text-2xl  font-bold'>Hi : {username} MF</h1></a> 
     </div>
      <div className='flex justify-end'>
       <button onClick={handleLogout} className='text-white font-bold'>LOGOUT</button></div>

@@ -12,6 +12,7 @@ import ErrorPage from './pages/error.jsx';
 import ProductPage from './pages/products.jsx';
 import Modal from './pages/modal.jsx';
 import Counter from './belajar/LifeCycle/Counter/index.jsx';
+import Profile from './pages/profile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
     path:"/modal",
     element:<Modal/>
   },
+  {
+    path:"/profile",
+    element:<Profile/>
+  },
+  
   
  
 ]);
