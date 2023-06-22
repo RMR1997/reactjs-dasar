@@ -7,8 +7,8 @@ export default function CardProduct(props) {
     const {children} = props;
   return (
     <>
-    <div className='rounded-lg bg-gradient-to-r from-violet-500 via-blue-500 to-sky-500 p-1 shadow-xl'>
-        <div className='w-full max-w-xs bg-white rounded-lg'> {children} </div>
+    <div className='rounded-lg  bg-gradient-to-r  from-violet-500 via-blue-500 to-sky-500 p-1 shadow-xl'>
+        <div className='w-full h-full max-w-xs  bg-white rounded-lg'> {children} </div>
     </div>
     </>
   )
@@ -17,9 +17,15 @@ export default function CardProduct(props) {
 const Header = (props) => {
     const {image} = props;
     return (
+        <>
+        <div className='flex justify-center items-center'>
         <a href="#">
-            <img src={image} alt="gambar" className='p-4 rounded-t-lg' />
+            <img src={image} alt="gambar" className='p-4 rounded-t-lg w-[250px] h-[250px]' />
         </a>
+        </div>
+       
+        </>
+        
     )
 }
 
@@ -27,11 +33,11 @@ const Body = (props) => {
     const {title, children} = props;
     return (
         <>
-        <div className='px-5 py-4'>
+        <div className='px-5 py-4 h-96 '>
         <a href="#">
-            <h5 className='text-3xl font-bold text-slate-900'> {title}
+            <h5 className='text-3xl font-bold text-slate-900 truncate '> {title}
             </h5>
-            <p className='mt-1 text-black text-base text-justify'> {children}</p>
+            <p className='mt-1 text-black text-base text-justify h-[200px]  overflow-hidden mt-10'> {children}</p>
         </a>
         </div>
        
