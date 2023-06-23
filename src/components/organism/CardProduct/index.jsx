@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from '../../atom/Button';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../redux/slices/cartSlice';
 
 // NESTED COMPONENT
 
@@ -51,13 +53,14 @@ const Body = (props) => {
 
 const Footer = (props) => {
     const {price, children, handleAddToCart,id} = props;
+    const dispatch = useDispatch()
     return (
         <>
         <div className='px-5 py-4'>
         <a href="#">
             <p className=' text-center text-2xl font-semibold text-slate-900'> price: {price.toLocaleString("id-ID", {style: "currency", currency: "IDR"})}
               </p>
-              <Button color="bg-blue-500" onClick={() => handleAddToCart(id)}>{children}</Button>
+              <Button color="bg-blue-500" onClick={() => dispatch(addToCart({id,qty: 1}))}>{children}</Button>
           </a>
         </div>
         

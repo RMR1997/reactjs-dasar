@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CardProduct from '../components/organism/CardProduct'
 import { getProduct } from '../services/product.service';
 import { useLogin } from '../hooks/useLogin';
+import { useSelector } from 'react-redux';
 
 
 // const data = [{
@@ -32,8 +33,8 @@ import { useLogin } from '../hooks/useLogin';
 
 export default function ProductPage() {
   //State /UseState = data/penyimpanan yang di pake buat menghandle komponen yang berubah2
-
-  const [cart, setCart] = useState([]);
+  const cart = useSelector((state) => state.cart.data)
+  // const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [data, setData] = useState([]);
   const username = useLogin();
@@ -42,9 +43,12 @@ export default function ProductPage() {
   //   qty:1,
   // },
 
-  useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")) || []);
-  },[]); //dependencies array (array kosong) = untuk menghentikan looping(warning)
+  // useEffect(() => {
+  //   setCart(JSON.parse(localStorage.getItem("cart")) || []);
+  // },[]); 
+  
+  
+  //dependencies array (array kosong) = untuk menghentikan looping(warning)
 
   //fungsi reduce buat eksekusi tiap element dalam array trus nampilin kedalam sebuah nilai
   
@@ -61,25 +65,25 @@ export default function ProductPage() {
     }
   }, [cart,data]); //sebagai dependencies array yang mana untuk memantau perubahan state
 
-  const handleAddToCart = (id) => {
+  // const handleAddToCart = (id) => {
 
-    // setCart([
-    //   ...cart,
-    //   {
-    //     title:"odeng",
-    //     qty:1,
-    //   }
-    // ]);
+  //   // setCart([
+  //   //   ...cart,
+  //   //   {
+  //   //     title:"odeng",
+  //   //     qty:1,
+  //   //   }
+  //   // ]);
     
-    // kalo ada id yang sama maka akan menambahkan qty +1
-    if(cart.find((item) => item.id === id)) {
-      //dia akan mapping dan membongkar itemnya 
-      setCart(cart.map((item) => (item.id === id ? {...item, qty:item.qty +1}:item )) )
-    } else {
-      //kalo datanya cuma 1 maka cuma akan di set satu
-      setCart([...cart, {id, qty:1 }]);
-    }
-  }
+  //   // kalo ada id yang sama maka akan menambahkan qty +1
+  //   if(cart.find((item) => item.id === id)) {
+  //     //dia akan mapping dan membongkar itemnya 
+  //     setCart(cart.map((item) => (item.id === id ? {...item, qty:item.qty +1}:item )) )
+  //   } else {
+  //     //kalo datanya cuma 1 maka cuma akan di set satu
+  //     setCart([...cart, {id, qty:1 }]);
+  //   }
+  // }
 
  useEffect(() => {
   getProduct((data) => {
@@ -113,7 +117,8 @@ export default function ProductPage() {
       <CardProduct keys={data.id}>
       <CardProduct.Header image={data.image} id={data.id}></CardProduct.Header>
       <CardProduct.Body title={data.title}>{data.description}</CardProduct.Body>
-      <CardProduct.Footer price={data.price} id={data.id} handleAddToCart={handleAddToCart}>BELI</CardProduct.Footer>
+      <CardProduct.Footer price={data.price} id={data.id} >BELI</CardProduct.Footer>
+      {/* handleAddToCart={handleAddToCart} */}
 
       </CardProduct>
 
