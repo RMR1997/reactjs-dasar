@@ -13,6 +13,7 @@ import ProductPage from './pages/products.jsx';
 import Modal from './pages/modal.jsx';
 import Counter from './belajar/LifeCycle/Counter/index.jsx';
 import Profile from './pages/profile.jsx';
+import DetailProduct from './pages/detailProduct.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,12 @@ const router = createBrowserRouter([
     path:"/profile",
     element:<Profile/>
   },
+  {
+    path:"/detailProduct/:id",
+    element:<DetailProduct/>
+  },
+  
+  
   
   
  

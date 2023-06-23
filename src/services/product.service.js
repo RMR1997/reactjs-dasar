@@ -15,3 +15,17 @@ export const getProduct = (callback) => {
         console.log(err);
     });
 };
+
+export const getDetailProduct = (id, callback) => {
+    axios
+    .get(`http://fakestoreapi.com/products/${id}`)
+     //pake method get untuk mengambil data di API
+    .then((res) => { 
+        //mengirimkan respon data jika sukses
+        console.log(res); 
+        callback(res.data);
+    })
+    .catch((err) =>{ //nampilin error 
+        console.log(err);
+    });
+};

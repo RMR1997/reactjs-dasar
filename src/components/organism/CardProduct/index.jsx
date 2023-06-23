@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../../atom/Button';
+import { Link } from 'react-router-dom';
 
 // NESTED COMPONENT
 
@@ -15,13 +16,16 @@ export default function CardProduct(props) {
 }
 
 const Header = (props) => {
-    const {image} = props;
+    const {image,id} = props;
     return (
         <>
         <div className='flex justify-center items-center'>
-        <a href="#">
+            <Link to={`/detailProduct/${id}`}>
             <img src={image} alt="gambar" className='p-4 rounded-t-lg w-[250px] h-[250px]' />
-        </a>
+            </Link>
+
+            
+       
         </div>
        
         </>
